@@ -1,7 +1,7 @@
 /*
 AnimatedPNG - A Javascript library for animated PNG images 
-Copyright (C) 2007 Steve Jones (steve@squaregoldfish.co.uk)
-Version 1.00
+Copyright (C) 2007-2008 Steve Jones (steve@squaregoldfish.co.uk)
+Version 1.01
 Web: http://www.squaregoldfish.co.uk/software/animatedpng
 Email: animatedpng@squaregoldfish.co.uk
 
@@ -56,7 +56,7 @@ function AnimatedPNG(imageName, firstImage, imageCount, delay)
 	this.repeat = true;
 	
 	// Indicates whether or not the animation is currently active
-	this.animationRunning = true;
+	this.animationRunning = false;
 	
 	// Indicates whether or not the animation has been displayed
 	// on the page
@@ -65,7 +65,9 @@ function AnimatedPNG(imageName, firstImage, imageCount, delay)
 	/** FUNCTIONS **/
 	
 	// Draw the animation after it has been set up
-	this.draw = function()
+    // Setting delayStart to true will prevent the animation from starting -
+    // it can be started manually by calling startAnimation
+	this.draw = function(delayStart)
 		{
 		// Draw the first image html, then call doDraw to continue
 		var html = new Array();
@@ -80,8 +82,13 @@ function AnimatedPNG(imageName, firstImage, imageCount, delay)
 		document.write(html.join(''));
 		document.getElementById(this.animName).src = this.images[this.firstImageNumber].src;
 		
-		setTimeout('animatedPNGs[\'' + this.animName + '\'].drawFrame()', this.delays[this.firstImageNumber]);
-		this.drawn = true;
+        if (!delayStart)
+            {
+            setTimeout('animatedPNGs[\'' + this.animName + '\'].drawFrame()', this.delays[this.firstImageNumber]);
+            this.animationRunning = true;
+            }
+
+        this.drawn = true;
 		}
 		
 	// Set the delay for a specific frame in the animation.

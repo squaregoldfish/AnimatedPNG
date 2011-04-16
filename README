@@ -1,6 +1,6 @@
 AnimatedPNG - A Javascript library for animated PNG images 
-Copyright (C) 2007 Steve Jones (steve@squaregoldfish.co.uk)
-Version 1.00
+Copyright (C) 2007-2008 Steve Jones (steve@squaregoldfish.co.uk)
+Version 1.01
 Web: http://www.squaregoldfish.co.uk/software/animatedpng
 Email: animatedpng@squaregoldfish.co.uk
 =======================================================================
@@ -18,7 +18,7 @@ lines of code. To create a ten-frame animation using the images fish01.png
 through fish10.png, with 100ms between each frame, use the following code:
 
 fishAnim = new AnimatedPNG('anim', 'fish01.png', 10, 100);
-fishAnim.draw();
+fishAnim.draw(false);
 
 
 ANIMATION BEHAVIOUR
