@@ -4,6 +4,7 @@ Copyright (C) 2007-2014 Steve Jones (steve@squaregoldfish.co.uk)
 Version 1.02
 Web: http://www.squaregoldfish.co.uk/software/animatedpng
 Email: steve@squaregoldfish.co.uk
+Twitter: @squaregoldfish
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -105,12 +106,11 @@ function AnimatedPNG(imageName, firstImage, imageCount, delay)
 		this.delays[frame] = delay;
 		}
 
-    // Clear any custom frame delays, setting all frames
-    // to have the delay specified in the initial set-up call.
-    //
+	// Clear any custom frame delays, setting all frames
+	// to have the delay specified in the initial set-up call.
+	//
 	this.clearFrameDelays = function()
 		{
-        window.console.log(this.delays);
 		for (var i = 0; i < this.delays.length; i++)
 			{
 				this.delays[i] = this.defaultDelay;
