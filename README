@@ -1,8 +1,9 @@
 AnimatedPNG - A Javascript library for animated PNG images 
 Copyright (C) 2007-2008 Steve Jones (steve@squaregoldfish.co.uk)
-Version 1.01
+Version 1.02
 Web: http://www.squaregoldfish.co.uk/software/animatedpng
-Email: animatedpng@squaregoldfish.co.uk
+Email: steve@squaregoldfish.co.uk
+Twitter: @squaregoldfish
 =======================================================================
 
 This file contains brief instructions for using the AnimtedPNG
@@ -31,6 +32,9 @@ setRepeat(repeatFlag);
 
 setFrameDelay(frame, delay);
     Sets the delay for an individual frame of the animation.
+
+clearFrameDelays();
+    Clears any custom frame delays set using setFrameDelay.
 
 startAnimation();
     Restarts the animation if it has been stopped.
