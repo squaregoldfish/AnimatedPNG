@@ -1,9 +1,9 @@
 /*
 AnimatedPNG - A Javascript library for animated PNG images 
-Copyright (C) 2007-2008 Steve Jones (steve@squaregoldfish.co.uk)
-Version 1.01
+Copyright (C) 2007-2014 Steve Jones (steve@squaregoldfish.co.uk)
+Version 1.02
 Web: http://www.squaregoldfish.co.uk/software/animatedpng
-Email: animatedpng@squaregoldfish.co.uk
+Email: steve@squaregoldfish.co.uk
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -23,10 +23,10 @@ animatedPNGs = new Array();
 // Constructor for an Animated PNG. This takes only the essential
 // parameters for the animation; other options may be specified
 // using other functions.
-//    imageName - The name of this animation
-//    firstImage - The filename of the first image
-//    imageCount - The number of frames in the animation
-//    delay - The default delay between frames
+//	imageName - The name of this animation
+//	firstImage - The filename of the first image
+//	imageCount - The number of frames in the animation
+//	delay - The default delay between frames
 function AnimatedPNG(imageName, firstImage, imageCount, delay)
 	{
 	/** Instance Variables **/
@@ -36,10 +36,13 @@ function AnimatedPNG(imageName, firstImage, imageCount, delay)
 
 	// The array of images for this animation
 	this.images = new Array();
+
+	// The default delay
+	this.defaultDelay = delay;
 	
 	// The frame-specific delays
 	this.delays = new Array();
-	
+
 	// The amount of padding required in image numbers
 	this.padCount = 0;
 	
@@ -65,8 +68,8 @@ function AnimatedPNG(imageName, firstImage, imageCount, delay)
 	/** FUNCTIONS **/
 	
 	// Draw the animation after it has been set up
-    // Setting delayStart to true will prevent the animation from starting -
-    // it can be started manually by calling startAnimation
+	// Setting delayStart to true will prevent the animation from starting -
+	// it can be started manually by calling startAnimation
 	this.draw = function(delayStart)
 		{
 		// Draw the first image html, then call doDraw to continue
@@ -82,13 +85,13 @@ function AnimatedPNG(imageName, firstImage, imageCount, delay)
 		document.write(html.join(''));
 		document.getElementById(this.animName).src = this.images[this.firstImageNumber].src;
 		
-        if (!delayStart)
-            {
-            setTimeout('animatedPNGs[\'' + this.animName + '\'].drawFrame()', this.delays[this.firstImageNumber]);
-            this.animationRunning = true;
-            }
+		if (!delayStart)
+			{
+			setTimeout('animatedPNGs[\'' + this.animName + '\'].drawFrame()', this.delays[this.firstImageNumber]);
+			this.animationRunning = true;
+			}
 
-        this.drawn = true;
+		this.drawn = true;
 		}
 		
 	// Set the delay for a specific frame in the animation.
@@ -100,6 +103,18 @@ function AnimatedPNG(imageName, firstImage, imageCount, delay)
 	this.setFrameDelay = function(frame, delay)
 		{
 		this.delays[frame] = delay;
+		}
+
+    // Clear any custom frame delays, setting all frames
+    // to have the delay specified in the initial set-up call.
+    //
+	this.clearFrameDelays = function()
+		{
+        window.console.log(this.delays);
+		for (var i = 0; i < this.delays.length; i++)
+			{
+				this.delays[i] = this.defaultDelay;
+			}
 		}
 		
 	// Indicate whether or not the animation should repeat.

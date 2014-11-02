@@ -25,9 +25,8 @@ function addCustomDelays()
     
 function disableCustomDelays()
     {
-    addCode('fishAnim.setFrameDelay(3, 100);<br/>fishAnim.setFrameDelay(15, 100);');
-    fishAnim.setFrameDelay(3, 100);
-    fishAnim.setFrameDelay(15, 100);
+    addCode('fishAnim.clearFrameDelays();');
+    fishAnim.clearFrameDelays();
     }
     
 function disableRepeat()
