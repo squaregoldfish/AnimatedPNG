@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>AnimatedPNG test</title>
+    </head>
+    <body bgcolor="#2323A3" style="color:white">
+<script type="text/javascript" src="../animatedpng.js"></script><script type="text/javascript" src="example.js"></script><div style="font-weight:bold">AnimatedPNG Example</div>
+<br/><br/>
+This page shows an example of the AnimatedPNG javascript library in action. The example uses images named <i>fish0001.png</i> through <i>fish0023.png</i>.
+
+Click the various buttons below to alter the behaviour of the animation. The panel on the left will display the Javascript calls used to make the various changes.
+<br/><br/>
+<div id="fishAnimDiv" style="float: right; background-color: #2323A3; width: 200px;">
+    <script type="text/javascript">
+        fishAnim = new AnimatedPNG('fish', 'fish0001.png', 23, 100);
+        fishAnim.draw(false);
+    </script>
+</div>
+<div style="height: 50px; overflow: auto; border: 1px solid white; background-color: #2323A3; margin-bottom: 10px;">
+    <div id="codeLog" style="font-style: italic;">
+        fishAnim = new AnimatedPNG('fish', 'fish0001.png', 23, 100);
+        fishAnim.draw(false);
+    </div>
+</div>
+<br/><br/>
+<button onclick="changeBackground()">Change Background Colour</button>
+
+<button onclick="stopAnimation()">Stop Animation</button>  <button onclick="startAnimation()">Start Animation</button>
+
+<button onclick="disableRepeat()">Disable Repeat</button>  <button onclick="enableRepeat()">Enable Repeat</button>
+
+<button onclick="addCustomDelays();">Add Frame Delays</button>  <button onclick="disableCustomDelays();">Remove Frame Delays</button>
+</body>
+</html>
